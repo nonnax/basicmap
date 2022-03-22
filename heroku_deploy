@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Id$ nonnax 2022-03-21 21:31:49 +0800
+
+./heroku_init
+
+git init
+
+heroku create
+
+git add .
+
+git commit -m "first static site commit"
+
+# Use git to deploy to Heroku
+
+git push heroku master
