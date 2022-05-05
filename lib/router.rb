@@ -7,11 +7,14 @@ class Route
 
   def initialize(env)
     if env["REQUEST_METHOD"] == "GET"
-      @route_name = ROUTES[env["PATH_INFO"]]
+      @route_name = ROUTES[env["PATH_INFO"]] || "404"
     end
   end
 
   def route_name
-    (@route_name || "404").to_s
+    @route_name.to_s
+  end
+  def default
+    "404"
   end
 end
