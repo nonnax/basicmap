@@ -1,41 +1,40 @@
-
 body{
-  color: yellow;  
+  color: yellow;
   background: #000000;
 }
 .navbar{
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
   align-items: center;
 }
 
-.navbar div{ 
-  font-weight: bold; 
-  font-size: 3em; 
+.navbar div{
+  font-weight: bold;
+  font-size: 3em;
   padding: 10px;
 }
 .navbar div a{
   text-decoration: none;
-  padding-left: 50px; 
-  padding-right: 50px; 
+  padding-left: 50px;
+  padding-right: 50px;
   color: white;
-} 
+}
 
 #content{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  width: 98vw;
 }
 
 .item{
-  flex: 200px;
+  flex: 0 1 50rem;
+  width: 60rem;
 }
 
 .item a{
-  flex: 200px;
   text-decoration: none;
 }
 .item:hover{

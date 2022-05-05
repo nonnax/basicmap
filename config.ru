@@ -3,4 +3,11 @@
 
 require_relative 'app'
 
+use Rack::Session::Cookie, secret: SecureRandom.hex(64)
+
+use Rack::Static,
+  :urls => ["/images", "/js", "/css"],
+  :root => "public"
+
+
 run App.new

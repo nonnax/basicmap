@@ -3,17 +3,23 @@
 require 'rack'
 require_relative 'lib/view'
 require_relative 'lib/router'
+require 'json'
+
+def pj(o)
+  s="<code class='item'>"
+  s<<JSON.pretty_generate(o)
+  s<<'</code>'
+end
+Route::ROUTES={
+  '/': :index,
+  '/home': :index
+}
 
 class App
+  class Response<Rack::Response; end
   def call(env)
-    route = Route.new(env).route_name
-    status = (route.match(/^\d+$/) || "200").to_s
-    response_body = View.new(route, visit_count: parse_session_count_cookie(env)).render
-
+    name, status = Route.fetch(env, default: :index).values_at(:name, :status)
+    response_body = View.render(pj(env), title:'viewer')
     [status, {}, [response_body]]
-  end
-
-  def parse_session_count_cookie(env)
-    Rack::Utils.parse_cookies(env)["session_count"]
   end
 end
