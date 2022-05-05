@@ -15,14 +15,7 @@ end
 
 Basic.routes do
   @database = load
-  set '/',  @database.map.with_index{|h, i|
-              h.transform_keys(&:to_sym)=>{tag:, body:}
-              %( <div class="item">
-                <h1><a href='/show?item=#{i}'>#{tag}</a></h1>
-                <p>"#{body[0]}"</p></div> )
-            }.join
-
-  set '/home',  :index
+  set '/', :index
 
   set '/show',  :show
 
@@ -33,6 +26,6 @@ class App < Basic::App
     db = load
     name, @status = fetch(env, default: :index).values_at(:name, :status)
 
-    erb name, title:'File item', doc: db[req.params['item'].to_i], params: req.params
+    erb name, title:'File item', db:, doc: db[req.params['item'].to_i], params: req.params
   end
 end

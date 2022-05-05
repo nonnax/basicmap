@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 # Id$ nonnax 2022-03-01 15:27:49 +0800
 require 'erb'

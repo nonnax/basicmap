@@ -1,24 +1,6 @@
 body{
-  color: yellow;
-  background: #000000;
-}
-.navbar{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-}
-
-.navbar div{
-  font-weight: bold;
-  font-size: 3em;
-  padding: 10px;
-}
-.navbar div a{
-  text-decoration: none;
-  padding-left: 50px;
-  padding-right: 50px;
-  color: white;
+  xcolor: yellow;
+  xbackground: #000000;
 }
 
 #content{
@@ -31,23 +13,37 @@ body{
 .item{
   flex: 1 0 10rem;
   padding: 0.5rem;
+  border: 1px solid white;
 }
+
 .item p{
-  color: white;
+  color: teal;
 }
 
 .item a{
   text-decoration: none;
 }
+
 .item:hover{
   -moz-transform: scale(1.025);
 }
 
 .active{
   background: blue;
-  color: white;
+  color: red;
 }
 
 .blur{
   filter: blur(6px);
+}
+
+.item1{
+  flex: 0 0 80rem;
+  padding: 2rem;
+  margin: 2rem;
+  border: 1px dotted yellow;
+  text-wrap: 20px;
+}
+.item1 h1{
+  text-align: center;
 }
