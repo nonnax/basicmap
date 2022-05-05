@@ -5,8 +5,8 @@
 require 'erb'
 class View
   attr :layout, :template
-  def self.render(page, **data)
-    new(page, **data).render
+  def self.erb(page, **data)
+    new(page, **data).erb
   end
 
   def initialize(page, **data)
@@ -20,7 +20,7 @@ class View
     @layout   = File.read(l) rescue '<%=yield%>'
   end
 
-  def render
+  def erb
       _render(@layout) { _render(@template, binding) }
   end
 

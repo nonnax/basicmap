@@ -22,9 +22,8 @@ Basic.routes do
 end
 
 class App < Basic::App
-  def call(env)
-    name, status = fetch(env, default: :index).values_at(:name, :status)
-    response_body = render(name, title:'viewer', doc: DOC)
-    [status, {'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400'}, [response_body]]
+  def get
+    name, @status = fetch(env, default: :index).values_at(:name, :status)
+    erb name, title:'viewer', doc: DOC
   end
 end
