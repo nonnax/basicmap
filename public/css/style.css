@@ -23,15 +23,17 @@ body{
 
 #content{
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: center;
   width: 98vw;
 }
 
 .item{
-  flex: 0 1 50rem;
-  width: 60rem;
+  flex: 1 0 10rem;
+  padding: 0.5rem;
+}
+.item p{
+  color: white;
 }
 
 .item a{
@@ -44,4 +46,8 @@ body{
 .active{
   background: blue;
   color: white;
+}
+
+.blur{
+  filter: blur(6px);
 }

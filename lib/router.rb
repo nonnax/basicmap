@@ -4,7 +4,7 @@
 # Id$ nonnax 2022-03-01 15:28:55 +0800
 class Router
   ROUTES = {
-    '/' => :index
+    '/' => 'Welcome!'
   }
   def self.set(&block)
     ROUTES.tap(&block)
