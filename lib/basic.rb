@@ -15,7 +15,8 @@ module Basic
 
   class App
     class Response<Rack::Response; end
-    attr :status, :body, :req, :env
+
+    attr :req, :env
 
     def fetch(env, **opts)
       Router.fetch(env, **opts)
@@ -27,9 +28,9 @@ module Basic
 
     def call(env)
       @req  = Rack::Request.new(env)
-      @env = env
+      @env  = env
       @body = get
-      [status, {'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400'}, [body]]
+      [@status, {'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400'}, [@body]]
     end
   end
 end

@@ -13,17 +13,21 @@ ___
 
 Basic.routes do
 
-  set '/',  %'<div class="item">
-            <h1><%=@data[:title]%></h1>
-            <p><%=@data[:doc]%></p></div>'*20
+  set '/',  (1..20).inject(''){|acc, s|
+              acc<< %(<div class="item">
+                  <h1><a href='/show?item=#{s}'><%=@data[:title]%></a></h1>
+                  <p><%=@data[:doc][0..120]%></p></div>)
+                  }
 
   set '/home',  :index
+
+  set '/show',  :show
 
 end
 
 class App < Basic::App
   def get
     name, @status = fetch(env, default: :index).values_at(:name, :status)
-    erb name, title:'viewer', doc: DOC
+    erb name, title:'File item', doc: DOC, params: req.params
   end
 end
