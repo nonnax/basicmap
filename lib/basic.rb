@@ -5,9 +5,13 @@ require_relative 'router'
 require_relative 'view'
 
 module Basic
-  def self.set(&block)
-    Router.set(&block)
+  def self.set(k, v)
+    Router::ROUTES[k]=v
   end
+  def self.routes(&block)
+    instance_eval(&block)
+  end
+
   class App
     class Response<Rack::Response; end
     def fetch(env, **opts)

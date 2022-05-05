@@ -6,9 +6,6 @@ class Router
   ROUTES = {
     '/' => 'Welcome!'
   }
-  def self.set(&block)
-    ROUTES.tap(&block)
-  end
   def self.fetch(env, default: nil)
     if env['REQUEST_METHOD'] == 'GET'
       status = 200

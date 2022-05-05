@@ -10,11 +10,14 @@ Apr 27, 2022 6:18 PM
 Columnist Jerry Suico Tundag of Cebu-based newspaper The Freeman falsely claimed in a tweet that presidential candidate Ferdinand “Bongbong” Marcos Jr.  had “accepted” the verdict of the Presidential Electoral Tribunal (PET), which dismissed in its entirety his poll protest against Vice President Leni Robredo six years ago.
 ___
 
-Basic.set do |x|
-  x['/'] = %'<div class="item">
+Basic.routes do 
+
+  set '/',  %'<div class="item">
             <h1><%=@data[:title]%></h1>
             <p><%=@data[:doc]%></p></div>'*20
-  x['/home']= :index
+
+  set '/home',  :index
+  
 end
 
 class App < Basic::App
