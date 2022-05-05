@@ -21,12 +21,10 @@ class View
   end
 
   def render
-    [template, layout].inject('') do |temp, f|
-      _render(f) { temp }
-    end
+      _render(@layout) { _render(@template, binding) }
   end
 
-  def _render(f)
-    ERB.new(f).result(binding)
+  def _render(f, b=binding)
+    ERB.new(f).result(b)
   end
 end

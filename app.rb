@@ -5,21 +5,16 @@ require_relative 'lib/view'
 require_relative 'lib/router'
 require 'json'
 
-def pj(o)
-  s="<code class='item'>"
-  s<<JSON.pretty_generate(o)
-  s<<'</code>'
+Route.set do |x|
+  x['/'] = '<h1> <%=@data%> </h1> '
+  x['/home']= :index
 end
-Route::ROUTES={
-  '/': :index,
-  '/home': :index
-}
 
 class App
   class Response<Rack::Response; end
   def call(env)
     name, status = Route.fetch(env, default: :index).values_at(:name, :status)
-    response_body = View.render(pj(env), title:'viewer')
-    [status, {}, [response_body]]
+    response_body = View.render(name, title:'viewer')
+    [status, {'Content-Type' => 'text/html', 'Cache-Control' => 'public, max-age=86400'}, [response_body]]
   end
 end
