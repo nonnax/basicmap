@@ -4,21 +4,16 @@ require 'rack'
 require_relative 'lib/basic'
 
 def load
-  db=[]
-  Dir.chdir 'public/models' do
-      Dir['*'].each do |f|
-         db << eval(IO.popen(["yaml", f], &:read))
-      end
-  end
-  db
+  [].tap{|db|
+    Dir['public/models/*'].each do |f|
+       db << eval(IO.popen(["yaml", f], &:read))
+    end
+  }
 end
 
 Basic.routes do
-  @database = load
-  set '/', :index
-
+  set '/',      :index
   set '/show',  :show
-
 end
 
 class App < Basic::App
