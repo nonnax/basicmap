@@ -8,3 +8,8 @@ task :c do
     sh 'sass.rb style.scss > ../public/css/style.css'
   end
 end
+
+desc 'run test'
+task :test do
+  sh 'ruby test.rb'
+end

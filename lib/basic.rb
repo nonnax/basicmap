@@ -18,12 +18,17 @@ module Basic
   class App
     class Response < Rack::Response; end
 
-    attr :req, :env
+    attr :req, :env, :res
 
     def fetch(env, **opts)
       request_method, h = Router.fetch(env, **opts)
+      @status = h[:status]
       params = req.params.transform_keys(&:to_sym)
-      send(request_method, *h.values_at(:name, :status), params) if respond_to?(request_method) 
+      if respond_to?(request_method) && @status != 404 
+        send(request_method, *h.values_at(:name, :status), params) 
+      else
+        @body='Not Found'
+      end
     end
 
     def erb(page, **opts)
