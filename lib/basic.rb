@@ -35,11 +35,18 @@ module Basic
       View::erb(page, **opts)
     end
 
+    def halt(app)
+      throw :halt, app.finish
+    end
+
     def call(env)
       @req  = Rack::Request.new(env)
+      @res  = Rack::Response.new
       @env  = env
-      @body = fetch(env)
-      [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
+      catch(:halt) do
+        @body = fetch(env)
+        [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
+      end
     end
   end
 end
