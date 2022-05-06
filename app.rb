@@ -7,6 +7,7 @@ require_relative 'lib/model'
 Basic.routes do
   set '/',      :index
   set '/show',  :show
+  set '/about',  '<%=data[:title]%>'
 end
 
 class App < Basic::App
