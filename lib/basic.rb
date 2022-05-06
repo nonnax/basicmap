@@ -27,7 +27,7 @@ module Basic
       if respond_to?(r.method) && @status != 404
         send(r.method, r.name, r.status, params)
       else
-        @body='Not Found'
+        respond_to?(:default) ? send(:default) : 'Not Found'
       end
     end
 

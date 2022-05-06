@@ -9,7 +9,7 @@ class Router
   end
   def self.fetch(env, default: nil)
     status = 200
-    name=ROUTES[env['PATH_INFO']]
+    name = ROUTES[env['PATH_INFO']]
     result = name ? { name:, status:} : { name: default, status: 404}
     method = env['REQUEST_METHOD'].downcase
     result.merge!(method: method)

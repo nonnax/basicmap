@@ -21,4 +21,7 @@ class App < Basic::App
     doc = db[params[:item].to_i]
     erb name, title: doc[:tag], db:, doc:, params:
   end
+  def default
+    erb 'Not Found'
+  end
 end
