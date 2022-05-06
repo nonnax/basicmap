@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Nunito';
-  margin: 0;
+  margin: auto;
   margin-left: 1rem;
   padding: 0;
   background: black;
@@ -15,14 +15,10 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: Oswald, sans-serif;
-  font-weight: medium;
+  font-weight: normal;
   color: silver;
-  background: black;
-  padding-left: 4px;
-}
-
-h1 {
-  font-family: 'Liberation Serif';
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 a {
@@ -99,16 +95,47 @@ a {
   margin: 2rem;
 }
 
-#container .item h1,
-#container .item h2,
-#container .item h3,
-#container .item1 h1,
-#container .item1 h2,
-#container .item1 h3 {
-  font-variant: small-caps;
-  font-size: inherit;
-}
-
 .blur {
   filter: blur(6px);
+}
+
+#container .item img, #container .item1 img {
+  display: block;
+  float: left;
+  width: 8rem;
+  height: auto;
+  margin: 5px;
+}
+
+#container .item img {
+  filter: blur(1px);
+}
+
+/* Responsive layout - makes a one column layout (100%) instead of a two-column layout (50%) */
+@media only screen and (min-width: 320px) {
+  #container {
+    justify-content: space-around;
+  }
+  #navbar {
+    width: 98%;
+    flex: 0 0 98%;
+    flex-flow: column no-wrap;
+    top: calc(100vh - 6vh);
+  }
+  .item,
+.navitem {
+    flex: 100%;
+    flex-flow: column no-wrap;
+  }
+  a {
+    font-size: 1.2rem;
+  }
+  h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 }

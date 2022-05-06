@@ -8,7 +8,7 @@ $tomato: #ff6347;
 
 body {
   font-family: 'Nunito';
-  margin: 0;
+  margin: auto;
   margin-left: 1rem;
   padding: 0;
   background: black;
@@ -18,13 +18,10 @@ body {
 
 h1, h2, h3, h4, h5{
   font-family: Oswald, sans-serif;
-  font-weight: medium;
+  font-weight: normal;
   color: silver;
-  background: black;
-  padding-left: 4px;
-}
-h1{
-  font-family: 'Liberation Serif';
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 a{
