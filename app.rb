@@ -2,14 +2,7 @@
 # Id$ nonnax 2022-03-22 22:25:13 +0800
 require 'rack'
 require_relative 'lib/basic'
-
-def load
-  [].tap{|db|
-    Dir['public/models/*'].each do |f|
-       db << eval(IO.popen(["yaml", f], &:read))
-    end
-  }
-end
+require_relative 'lib/model'
 
 Basic.routes do
   set '/',      :index
@@ -17,10 +10,12 @@ Basic.routes do
 end
 
 class App < Basic::App
+  def db
+    DB::load
+  end
   def get
-    db = load
     name, @status = fetch(env, default: :index).values_at(:name, :status)
-
-    erb name, title:'File item', db:, doc: db[req.params['item'].to_i], params: req.params
+    doc = db[req.params['item'].to_i]
+    erb name, title: doc['tag'], db:, doc: doc,  params: req.params
   end
 end

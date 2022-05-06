@@ -32,7 +32,8 @@ module Basic
       @req  = Rack::Request.new(env)
       @env  = env
       @body = get
-      [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
+      # [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
+      [@status, { 'Content-Type' => 'text/html; charset=utf-8;' }, [@body]]
     end
   end
 end

@@ -1,0 +1,26 @@
+/* GLOBAL STYLES */
+$font: Oswald, sans-serif;
+$tomato: #ff6347;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito';
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, Black, grey);
+  color: white;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: Oswald, sans-serif;
+  font-weight: medium;
+  color: #ff4500;
+  background: black;
+  padding-left: 4px;
+}
+h1{
+  font-family: 'Liberation Serif';
+}

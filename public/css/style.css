@@ -1,49 +1,110 @@
-body{
-  xcolor: yellow;
-  xbackground: #000000;
+/* GLOBAL STYLES */
+* {
+  box-sizing: border-box;
 }
 
-#content{
+body {
+  font-family: 'Nunito';
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, Black, grey);
+  color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: Oswald, sans-serif;
+  font-weight: medium;
+  color: #ff4500;
+  background: black;
+  padding-left: 4px;
+}
+
+h1 {
+  font-family: 'Liberation Serif';
+}
+
+#header,
+#container {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 96vw;
+}
+
+#header {
+  flex-wrap: wrap;
+  width: 96vw;
+  min-height: 4vw;
   justify-content: center;
-  width: 98vw;
+  padding-top: 0;
 }
 
-.item{
-  flex: 1 0 10rem;
-  padding: 0.5rem;
-  border: 1px solid white;
+#header .navbar {
+  flex: 0 0 96vw;
+  width: 96vw;
+  margin: 1em;
+  padding: 1em;
+  padding-top: 0;
+  flex-wrap: wrap;
+  height: 4vw;
 }
 
-.item p{
-  color: teal;
+#header .navbar .item {
+  flex: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  background: red;
+  color: white;
 }
 
-.item a{
+#container .item {
+  flex: 15rem;
+  width: 15rem;
+  margin: 1em;
+  padding: 1em;
+  justify-content: center;
+}
+
+#container .item p {
+  color: inherit;
+}
+
+#container .item a {
+  /* width: 100%; */
+  color: #aa33aa;
+  padding: inherit;
   text-decoration: none;
 }
 
-.item:hover{
-  -moz-transform: scale(1.025);
+#container .item img {
+  flex: 0 0 200px;
+  height: 200px;
+  /* width: auto; */
 }
 
-.active{
-  background: blue;
-  color: red;
+#container .item:hover {
+  -moz-transn: scale(1.002);
 }
 
-.blur{
-  filter: blur(6px);
-}
-
-.item1{
-  flex: 0 0 80rem;
-  padding: 2rem;
+#container .item1 {
+  flex: 0 0 96vw;
+  flex-flow: no-wrap;
+  width: 96vw;
+  padding: inherit;
   margin: 2rem;
-  border: 1px dotted yellow;
-  text-wrap: 20px;
 }
-.item1 h1{
-  text-align: center;
+
+#container .item h1,
+#container .item h2,
+#container .item h3,
+#container .item1 h1,
+#container .item1 h2,
+#container .item1 h3 {
+  font-variant: small-caps;
+  font-size: inherit;
+}
+
+.blur {
+  filter: blur(6px);
 }

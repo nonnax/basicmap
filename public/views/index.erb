@@ -1,14 +1,21 @@
 <% data.db.each_with_index do |h, i|
    h.transform_keys!(&:to_sym) => {body: , tag: }
 %>
-<div class="item">
-  <h1>
-    <a href='/show?item=<%=i%>'>
-      <%= tag %>
-    </a>
-  </h1>
-  <p>
-    <%=body[0].strip%>
-  </p>
-</div>
+
+  <% if i.zero? %>
+    <div class='item1'>
+  <% else %>
+    <div class="item">
+  <% end %>
+
+    <h1>
+      <a href='/show?item=<%=i%>'>
+        <%= tag %>
+      </a>
+    </h1>
+    <p>
+      <%=body[0].strip%>
+    </p>
+  </div>
+
 <% end %>
