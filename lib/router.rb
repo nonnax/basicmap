@@ -6,11 +6,10 @@ class Router
   ROUTES = { '/' => 'Welcome!' }
 
   def self.fetch(env, default: nil)
-    if env['REQUEST_METHOD'] == 'GET'
-      status = 200
-      name=ROUTES[env['PATH_INFO']]
-      return { name:, status:} if name
-    end
-    { name: default, status: 404}
+    status = 200
+    name=ROUTES[env['PATH_INFO']]
+    result = name ? { name:, status:} : { name: default, status: 404}
+    request_method = env['REQUEST_METHOD'].downcase
+    [request_method, result]
   end
 end

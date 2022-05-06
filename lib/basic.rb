@@ -21,7 +21,9 @@ module Basic
     attr :req, :env
 
     def fetch(env, **opts)
-      Router.fetch(env, **opts)
+      request_method, h = Router.fetch(env, **opts)
+      params = req.params.transform_keys(&:to_sym)
+      send(request_method, *h.values_at(:name, :status), params) if respond_to?(request_method) 
     end
 
     def erb(page, **opts)
@@ -31,7 +33,7 @@ module Basic
     def call(env)
       @req  = Rack::Request.new(env)
       @env  = env
-      @body = get
+      @body = fetch(env)
       [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
       # [@status, { 'Content-Type' => 'text/html; charset=utf-8;' }, [@body]]
     end

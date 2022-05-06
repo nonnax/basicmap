@@ -1,7 +1,7 @@
 <div class="item1">
-  #<%= data.params['item']%>
-  <h1><%=data.doc['tag']%></h1>
+  #<%= data.dig(:params,:item)%>
+  <h1><%= data.dig(:doc,:tag)%></h1>
   <p class="class">
-    <%=data.doc['body'][0].split.join(' ')%>
+    <%= data.dig(:doc, :body)[0].split.join(' ')%>
   </p>
 </div>

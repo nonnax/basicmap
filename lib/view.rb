@@ -9,7 +9,7 @@ class View
   end
 
   def initialize(page, **data)
-    @data = Struct.new(*data.keys).new(*data.values)
+    @data = data
 
     l, t = [:layout, page].map do |f|
       File.join(__dir__, "../public/views/#{f}.erb")

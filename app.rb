@@ -14,9 +14,9 @@ class App < Basic::App
   def db
     DB::load
   end
-  def get
-    name, @status = fetch(env, default: :index).values_at(:name, :status)
-    doc = db[req.params['item'].to_i]
-    erb name, title: doc['tag'], db:, doc: doc,  params: req.params
+  def get(name, status, params)
+    @status = status
+    doc = db[params[:item].to_i]
+    erb name, title: doc[:tag], db:, doc:, params: 
   end
 end

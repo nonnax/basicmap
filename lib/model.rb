@@ -12,6 +12,7 @@ module DB
     header, body = doc.split(/-{3,}/,2)
     header = YAML.load(header)
     header.tap{|h| h['body'] = [to_html(body)] }
+    header.transform_keys(&:to_sym)
   end
 
   def self.load
