@@ -1,3 +1,7 @@
-<% @data[:data].each do |e| %>
-  <div class='item'><%= e %></div>
+<% @data[:data].each_with_index do |e, i| %>
+    <%if i.zero? %>
+      <div class='item1'><%= e %></div>
+    <% else %>
+      <div class='item' ><%= e %></div>
+    <% end %>
 <% end %>

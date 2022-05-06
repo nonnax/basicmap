@@ -1,23 +1,23 @@
 @import 'base';
 
-$maxwidth: 96vw;
+$maxwidth: 95vw;
 
 #header,
 #container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 96vw;
+  width: $maxwidth;
 }
 
 #header{
   flex-wrap: wrap;
-  width: 96vw;
+  width: $maxwidth;
   min-height: 4vw;
   justify-content: center;
   padding-top: 0;
   .navbar{
-    flex: 0 0 96vw;
+    flex: 0 0 $maxwidth;
     width: 96vw;
     margin: 1em;
     padding: 1em;
@@ -37,6 +37,8 @@ $maxwidth: 96vw;
 
 
 #container {
+  background: linear-gradient(to bottom, Black, grey);
+
  .item {
     flex: 15rem;
     width: 15rem;
@@ -46,13 +48,6 @@ $maxwidth: 96vw;
 
     p {
       color: inherit;
-    }
-
-    a {
-    /* width: 100%; */
-    color: #aa33aa;
-    padding: inherit;
-    text-decoration: none;
     }
 
     img {
@@ -65,9 +60,9 @@ $maxwidth: 96vw;
     -moz-transn: scale(1.002);
   }
   .item1 {
-    flex: 0 0 $maxwidth;
+    flex: 0 0 calc($maxwidth-1rem);
     flex-flow: no-wrap;
-    width: $maxwidth;
+    width: calc($maxwidth-1rem);
     padding: inherit;
     margin: 2rem;
   }

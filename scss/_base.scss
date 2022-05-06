@@ -9,18 +9,25 @@ $tomato: #ff6347;
 body {
   font-family: 'Nunito';
   margin: 0;
+  margin-left: 1rem;
   padding: 0;
-  background: linear-gradient(to bottom, Black, grey);
+  background: black;
   color: white;
+  justify-content: center;
 }
 
 h1, h2, h3, h4, h5{
   font-family: Oswald, sans-serif;
   font-weight: medium;
-  color: #ff4500;
+  color: silver;
   background: black;
   padding-left: 4px;
 }
 h1{
   font-family: 'Liberation Serif';
+}
+
+a{
+  text-decoration: none;
+  color: orange;
 }

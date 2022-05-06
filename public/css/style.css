@@ -6,15 +6,17 @@
 body {
   font-family: 'Nunito';
   margin: 0;
+  margin-left: 1rem;
   padding: 0;
-  background: linear-gradient(to bottom, Black, grey);
+  background: black;
   color: white;
+  justify-content: center;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: Oswald, sans-serif;
   font-weight: medium;
-  color: #ff4500;
+  color: silver;
   background: black;
   padding-left: 4px;
 }
@@ -23,24 +25,29 @@ h1 {
   font-family: 'Liberation Serif';
 }
 
+a {
+  text-decoration: none;
+  color: orange;
+}
+
 #header,
 #container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 96vw;
+  width: 95vw;
 }
 
 #header {
   flex-wrap: wrap;
-  width: 96vw;
+  width: 95vw;
   min-height: 4vw;
   justify-content: center;
   padding-top: 0;
 }
 
 #header .navbar {
-  flex: 0 0 96vw;
+  flex: 0 0 95vw;
   width: 96vw;
   margin: 1em;
   padding: 1em;
@@ -58,6 +65,10 @@ h1 {
   color: white;
 }
 
+#container {
+  background: linear-gradient(to bottom, Black, grey);
+}
+
 #container .item {
   flex: 15rem;
   width: 15rem;
@@ -68,13 +79,6 @@ h1 {
 
 #container .item p {
   color: inherit;
-}
-
-#container .item a {
-  /* width: 100%; */
-  color: #aa33aa;
-  padding: inherit;
-  text-decoration: none;
 }
 
 #container .item img {
@@ -88,9 +92,9 @@ h1 {
 }
 
 #container .item1 {
-  flex: 0 0 96vw;
+  flex: 0 0 calc($maxwidth-1rem);
   flex-flow: no-wrap;
-  width: 96vw;
+  width: calc($maxwidth-1rem);
   padding: inherit;
   margin: 2rem;
 }
