@@ -8,7 +8,7 @@ require_relative 'view'
 
 module Basic
   def self.set(k, v)
-    Router::ROUTES[k] = v
+    Router::set(k, v)
   end
 
   def self.routes(&block)
@@ -21,18 +21,18 @@ module Basic
     attr :req, :env, :res
 
     def fetch(env, **opts)
-      request_method, h = Router.fetch(env, **opts)
-      @status = h[:status]
+      r = Router::fetch(env, **opts)
+      @status = r.status
       params = req.params.transform_keys(&:to_sym)
-      if respond_to?(request_method) && @status != 404 
-        send(request_method, *h.values_at(:name, :status), params) 
+      if respond_to?(r.method) && @status != 404
+        send(r.method, r.name, r.status, params)
       else
         @body='Not Found'
       end
     end
 
     def erb(page, **opts)
-      View.erb(page, **opts)
+      View::erb(page, **opts)
     end
 
     def call(env)
@@ -40,7 +40,6 @@ module Basic
       @env  = env
       @body = fetch(env)
       [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
-      # [@status, { 'Content-Type' => 'text/html; charset=utf-8;' }, [@body]]
     end
   end
 end

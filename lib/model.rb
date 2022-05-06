@@ -8,6 +8,10 @@ module DB
     Kramdown::Document.new(doc).to_html
   end
 
+  def self.data
+    @data
+  end
+
   def self.to_hash(doc)
     header, body = doc.split(/-{3,}/,2)
     header = YAML.load(header)
@@ -16,7 +20,7 @@ module DB
   end
 
   def self.load
-    [].tap{|d|
+    @data=[].tap{|d|
       Dir['public/models/*'].each do |f|
          d << to_hash(File.read(f))
       end

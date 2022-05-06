@@ -10,13 +10,15 @@ Basic.routes do
   set '/about',  '<%=data[:title]%>'
 end
 
+DB::load
+
 class App < Basic::App
   def db
-    DB::load
+    DB::data
   end
   def get(name, status, params)
     @status = status
     doc = db[params[:item].to_i]
-    erb name, title: doc[:tag], db:, doc:, params: 
+    erb name, title: doc[:tag], db:, doc:, params:
   end
 end
