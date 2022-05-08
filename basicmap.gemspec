@@ -12,15 +12,3 @@ Gem::Specification.new do |s|
   s.license = "GPL-3.0"
 end
 
----------cut-----------
-# Gemfile
-
-source "https://rubygems.org"
-
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
-
-# gem 'heroku_basic', :github => 'nonnax/heroku_basic'
