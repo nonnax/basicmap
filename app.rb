@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Id$ nonnax 2022-03-22 22:25:13 +0800
 require 'rack'
-require_relative 'lib/basic'
+require_relative 'lib/basicmap'
 require_relative 'lib/model'
 
 Basic.routes do
