@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Id$ nonnax 2022-03-22 22:25:13 +0800
 require 'rack'
-require_relative 'lib/basic'
+require_relative '../lib/basic'
 require_relative 'lib/model'
 
 Basic.routes do
@@ -17,7 +17,6 @@ class App < Basic::App
     DB::data
   end
   def get(name, params)
-    # @status = status
     doc = db[params[:item].to_i]
     erb name, title: doc[:tag], db:, doc:, params:
   end

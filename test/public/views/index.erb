@@ -8,11 +8,10 @@
     <div class="item">
   <% end %>
 
-    <h1>
-      <a href='/show?item=<%=i%>'>
-        <%= tag %>
-      </a>
-    </h1>
+    <a href='/show?item=<%=i%>'>
+      <h1><%= tag %></h1>
+    </a>
+
     <p>
       <%=body[0].strip%>
     </p>

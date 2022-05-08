@@ -12,17 +12,18 @@ module DB
     @data
   end
 
-  def self.to_hash(doc)
+  def self.to_hash(doc, &block)
     header, body = doc.split(/-{3,}/,2)
     header = YAML.load(header)
+    body = block.call(body) if block
     header.tap{|h| h['body'] = [to_html(body)] }
     header.transform_keys(&:to_sym)
   end
 
-  def self.load
+  def self.load(&block)
     @data=[].tap{|d|
       Dir['public/models/*'].each do |f|
-         d << to_hash(File.read(f))
+         d << to_hash(File.read(f), &block)
       end
     }
   end

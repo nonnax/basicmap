@@ -11,5 +11,5 @@ end
 
 desc 'run test'
 task :test do
-  sh 'ruby test.rb'
+    sh 'ruby test.rb'
 end

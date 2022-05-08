@@ -1,0 +1,62 @@
+body{
+  color: yellow;
+  background: #000000;
+}
+.navbar{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.navbar div{
+  font-weight: bold;
+  font-size: 3em;
+  padding: 10px;
+}
+.navbar div a{
+  text-decoration: none;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+}
+
+#content{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 98vw;
+}
+
+.item{
+  flex: 1 0 10rem;
+  padding: 0.5rem;
+  border: 1px solid white;
+}
+.item p{
+  color: white;
+}
+
+.item a{
+  text-decoration: none;
+}
+.item:hover{
+  -moz-transform: scale(1.025);
+}
+
+.active{
+  background: blue;
+  color: white;
+}
+
+.blur{
+  filter: blur(6px);
+}
+
+.item1{
+  flex: 0 0 50vw;
+  padding: 2rem;
+  margin: 2rem;
+  border: 1px dotted yellow;
+  text-wrap: 20px;
+}

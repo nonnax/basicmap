@@ -3,16 +3,29 @@
 # Id$ nonnax 2022-03-01 15:27:49 +0800
 require 'erb'
 class View
-  attr :data
+  @settings = {}
+  @settings[:views]='public/views'
+  @settings[:layout]='layout'
+
+  attr :data, :params
+
   def self.erb(page, **data)
     new(page, **data).erb
   end
 
-  def initialize(page, **data)
-    @data = data
+  def self.settings
+    @settings
+  end
 
-    l, t = [:layout, page].map do |f|
-      File.join(__dir__, "../public/views/#{f}.erb")
+  def settings
+    self.class.settings
+  end
+
+  def initialize(page, **opts)
+    @params = @data = opts.dup
+    layout = params.fetch(:layout, settings[:layout])
+    l, t = [layout, page].map do |f|
+      File.join(Dir.pwd, "#{settings[:views]}/#{f}.erb")
     end
 
     @template = File.read(t) rescue page
@@ -27,3 +40,4 @@ class View
     ERB.new(f).result(b)
   end
 end
+

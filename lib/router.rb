@@ -11,8 +11,7 @@ class Router
     status = 200
     name = ROUTES[env['PATH_INFO']]
     result = name ? { name:, status:} : { name: default, status: 404}
-    method = env['REQUEST_METHOD'].downcase
-    result.merge!(method: method)
+    result.merge!(method: env['REQUEST_METHOD'].downcase)
     Struct.new(*result.keys).new(*result.values)
   end
 end

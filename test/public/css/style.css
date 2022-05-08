@@ -26,6 +26,14 @@ a {
   color: orange;
 }
 
+bold, strong, em {
+  background: silver;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
 #header,
 #container {
   display: flex;

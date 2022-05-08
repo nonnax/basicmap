@@ -22,10 +22,13 @@ module Basic
 
     def fetch(env, **opts)
       r = Router::fetch(env, **opts)
-      @status = r.status
-      params = req.params.transform_keys(&:to_sym)
-      if respond_to?(r.method) && @status != 404
-        send(r.method, r.name, r.status, params)
+      res.status = r.status
+      if respond_to?(r.method) && res.status != 404
+        send(
+          r.method,
+          r.name,
+          req.params.transform_keys(&:to_sym)
+        )
       else
         respond_to?(:default) ? send(:default) : 'Not Found'
       end
@@ -41,11 +44,11 @@ module Basic
 
     def call(env)
       @req  = Rack::Request.new(env)
-      @res  = Rack::Response.new
+      @res  = Rack::Response.new(nil, 200, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' })
       @env  = env
       catch(:halt) do
-        @body = fetch(env)
-        [@status, { 'Content-Type' => 'text/html; charset=utf-8;', 'Cache-Control' => 'public, max-age=86400' }, [@body]]
+        res.write fetch(env)
+        res.finish
       end
     end
   end
