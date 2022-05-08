@@ -13,6 +13,14 @@ class View
     new(page, **data).erb
   end
 
+  def self.views(&block)
+    instance_eval(&block)
+  end
+
+  def self.set(k, v)
+      @settings[k]=v
+  end
+
   def self.settings
     @settings
   end

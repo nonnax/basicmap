@@ -7,12 +7,12 @@ require_relative 'router'
 require_relative 'view'
 
 module Basic
-  def self.set(k, v)
-    Router::set(k, v)
+  def self.routes(&block)
+    Router.instance_eval(&block)
   end
 
-  def self.routes(&block)
-    instance_eval(&block)
+  def self.views(&block)
+    View.instance_eval(&block)
   end
 
   class App
